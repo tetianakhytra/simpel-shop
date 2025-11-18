@@ -1,0 +1,74 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import Button from "@/components/Button";
+
+export default function ProductList({ category }) {
+  const [products, setProducts] = useState([]);
+  const [limit, setLimit] = useState(12);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      setLoading(true);
+      try {
+        const url =
+          category && category !== "all"
+            ? `https://dummyjson.com/products/category/${category}?limit=${limit}`
+            : `https://dummyjson.com/products?limit=${limit}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+        setProducts(data.products || []);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+  }, [category, limit]);
+
+  return (
+    <div>
+
+      {/* GRID */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <Link
+            href={`/products/${product.id}`}
+            key={product.id}
+            className="bg-white rounded-3xl shadow p-4 hover:scale-[1.02] transition-transform"
+          >
+            <div className="relative w-full h-40 rounded-2xl overflow-hidden">
+              <Image
+                src={product.thumbnail}
+                alt={product.title}
+                fill
+                className="object-contain bg-white rounded-xl"
+              />
+            </div>
+
+            <h2 className="font-heading text-base mt-3">{product.title}</h2>
+            <p className="font-body text-sm text-gray-600">{product.brand}</p>
+            <p className="font-body text-sm text-gray-500">{product.category}</p>
+          </Link>
+        ))}
+      </div>
+
+      {/* LOAD MORE BUTTON */}
+     <div className="flex justify-center mt-10 mb-20">
+  <Button
+    variant="secondary"
+    onClick={() => setLimit(prev => prev + 8)}
+    disabled={loading}
+  >
+    {loading ? "Loading..." : "Load more"}
+  </Button>
+</div>
+    </div>
+  );
+}
