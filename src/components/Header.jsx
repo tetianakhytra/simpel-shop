@@ -9,7 +9,7 @@ const Header = () => {
     return ( 
         <article className='bg-[var(--green)] grid grid-cols-[1fr_auto_1fr] p-3'>
             <div></div>
-            <nav className='text-white flex justify-center gap-100'>
+            <nav className='text-white flex justify-center gap-[5vw] md:gap-[20vw] lg:gap-[25vw]'>
                 <Link href="/">
                     <h2 className="cursor-pointer hover:text-[var(--yellow)]">Home</h2>
                 </Link>                
@@ -17,7 +17,7 @@ const Header = () => {
                     <h2 className="cursor-pointer hover:text-[var(--yellow)]">Products</h2>
                 </Link>
             </nav>
-            <section className='cursor-pointer flex justify-self-end items-center gap-3 pr-10 text-black'>
+            <section className='cursor-pointer flex justify-self-end items-center gap-3 pr-[2vw] md:pr-[4vw] lg:pr-[5vw] text-black'>
                 <Search className="hover:text-black/30" />
                 <Heart className="hover:fill-black/30" fill="black" stroke="black" />
                 <ShoppingBasket className="hover:text-black/30" />
