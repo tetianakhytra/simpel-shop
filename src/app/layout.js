@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import { Gabarito, Inter } from "next/font/google";
 
@@ -30,6 +31,8 @@ export default function RootLayout({ children }) {
 
         <main className="min-h-screen">{children}</main>
     
+
+        <Footer></Footer>
       </body>
     </html>
   );
