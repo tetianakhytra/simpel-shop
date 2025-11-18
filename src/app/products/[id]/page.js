@@ -126,3 +126,7 @@ export default function ProductPage({ params }) {
     </div>
   );
 }
+
+
+
+{/*BasketProduct komponenten er ikke en page.js og derfor får den ikke params automatisk*/}
