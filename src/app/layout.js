@@ -1,7 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
 import { Gabarito, Inter } from "next/font/google";
 
 

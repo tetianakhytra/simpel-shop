@@ -29,7 +29,7 @@ export default function CategoryList({ selected, onSelect }) {
           ${
             selected === "all"
               ? "bg-white text-black border-2 border-[#F5BD19] shadow-sm"
-              : "bg-[#FBF7F0] text-gray-600 border border-[#94855a] hover:bg-[#F3EFEA]"
+              : "bg-[#FBF7F0] text-gray-700 border  border-[#d7b44b] hover:bg-[#F3EFEA]"
           }
         `}
       >

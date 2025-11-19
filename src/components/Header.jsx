@@ -24,7 +24,10 @@ const [isOpen, setIsOpen] = useState(false);
             </nav>
           
             <section className='cursor-pointer flex justify-self-end items-center gap-3 pr-10 text-black'>
-                <Search className="hover:text-black/30" />
+       <Link href="/products#search-input">
+  <Search className="hover:text-black/30 cursor-pointer" />
+</Link>
+
                
                <Link href="/favorites">
                 <Heart className="hover:fill-black/30" fill="black" stroke="black" /></Link>
