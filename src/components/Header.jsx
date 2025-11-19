@@ -11,7 +11,7 @@ const [count, setCount] = useState(0);
 const loadCount = () => {
     try {
       const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      const total = cart.length;
+      const total = cart.reduce((sum, item) => sum + (item.amount || 1), 0);
       setCount(total);
     } catch {
       setCount(0);
