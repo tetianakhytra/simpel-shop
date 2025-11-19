@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState, use } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
@@ -45,8 +46,7 @@ export default function ProductPage({ params }) {
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-12 px-8 min-h-screen">
-
+    <div className="max-w-6xl mx-auto px-4 py-10">
 
    <div className="flex items-center justify-between mb-6">
   
@@ -126,7 +126,3 @@ export default function ProductPage({ params }) {
     </div>
   );
 }
-
-
-
-{/*BasketProduct komponenten er ikke en page.js og derfor får den ikke params automatisk*/}

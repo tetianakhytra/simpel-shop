@@ -26,7 +26,8 @@ const [isOpen, setIsOpen] = useState(false);
             <section className='cursor-pointer flex justify-self-end items-center gap-3 pr-10 text-black'>
                 <Search className="hover:text-black/30" />
                
-                <Heart className="hover:fill-black/30" fill="black" stroke="black" />
+               <Link href="/favorites">
+                <Heart className="hover:fill-black/30" fill="black" stroke="black" /></Link>
                 
                 
                 <ShoppingBasket  onClick={() => setIsOpen(true)} className="hover:text-black/30" />
