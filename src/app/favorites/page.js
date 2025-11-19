@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { X } from "lucide-react"; // ⭐ NEW ICON
 
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState([]);
@@ -43,11 +43,10 @@ export default function FavoritesPage() {
     setFavorites(products);
   }
 
-
   function toggleFavorite(id) {
     localStorage.setItem(`fav-${id}`, "false");
 
-
+    // remove from UI
     setFavorites((prev) => prev.filter((p) => p.id !== id));
   }
 
@@ -69,29 +68,38 @@ export default function FavoritesPage() {
             key={product.id}
             className="border rounded-xl p-4 bg-white relative hover:shadow-lg transition"
           >
-     
+
+            {/* ❌ REMOVE BUTTON (X icon) */}
             <button
-              onClick={() => toggleFavorite(product.id)}
-              className="absolute top-3 right-3"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleFavorite(product.id);
+              }}
+              className="absolute top-3 right-3 z-20"
             >
-              <Heart size={28} color="black" fill="black" />
+              <X
+                size={26}
+                stroke="black"
+                className="hover:text-red-600 transition"
+              />
             </button>
 
-   
-      <Link href={`/products/${product.id}`}>
-  <div className="relative w-full h-48 mb-4">
-    <Image
-      src={product.thumbnail}
-      alt={product.title}
-      fill
-      className="object-contain rounded"
-    />
-  </div>
+            {/* PRODUCT LINK */}
+            <Link href={`/products/${product.id}`}>
+              <div className="relative w-full h-48 mb-4">
+                <Image
+                  src={product.thumbnail}
+                  alt={product.title}
+                  fill
+                  className="object-contain rounded"
+                />
+              </div>
 
-  <h2 className="text-xl font-semibold mb-1">{product.title}</h2>
-  <p className="text-gray-500 text-sm mb-2">{product.brand}</p>
-  <p className="font-bold text-lg">${product.price}</p>
-</Link>
+              <h2 className="text-xl font-semibold mb-1">{product.title}</h2>
+              <p className="text-gray-500 text-sm mb-2">{product.brand}</p>
+              <p className="font-bold text-lg">${product.price}</p>
+            </Link>
 
           </div>
         ))}

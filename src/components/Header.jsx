@@ -24,9 +24,11 @@ const [isOpen, setIsOpen] = useState(false);
             </nav>
           
             <section className='cursor-pointer flex justify-self-end items-center gap-[1.5vw] pr-[2vw] text-black'>
-                <Search className="hover:text-black/30" />
-               
-                <Heart className="hover:fill-black/30" fill="black" stroke="black" />
+                      <Link href="/products#search-input"><Search className="hover:text-black/30" />
+               </Link>
+
+                <Link href="/favorites">
+                <Heart className="hover:fill-black/30" fill="black" stroke="black" /></Link>
                 
                 <div className="grid grid-cols-1 grid-rows-1">
                     <ShoppingBasket  onClick={() => setIsOpen(true)} className="hover:text-black/30 col-span-full row-span-full" />

@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Gabarito, Inter } from "next/font/google";
 
-
 const gabarito = Gabarito({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -24,14 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${gabarito.variable} ${inter.variable} font-body bg-[#FBF7F0] text-gray-900`}
->
-        <Header></Header>
+        className={`min-h-screen flex flex-col ${gabarito.variable} ${inter.variable} font-body bg-[#FBF7F0] text-gray-900`}
+      >
+        <Header />
 
-        <main className="">{children}</main>
+        <main className="flex-grow">{children}</main>
 
-        <Footer></Footer>
-
+        <Footer />
       </body>
     </html>
   );
